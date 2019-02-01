@@ -1,0 +1,71 @@
+
+
+<div class="flex-column" style="margin: 16px;">
+    <mat-card>
+        <mat-card-title>{{simulation.name}}</mat-card-title>
+        <mat-card-content>
+          <table mat-table [dataSource]="simulation.investments" multiTemplateDataRows>
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let row">{{row.name}}</td>
+              </ng-container>
+          
+              <ng-container matColumnDef="principal">
+                <th mat-header-cell *matHeaderCellDef>Starting Principal</th>
+                <td mat-cell *matCellDef="let row">{{row.principal | currency:'USD':'symbol'}}</td>
+              </ng-container>
+          
+              <ng-container matColumnDef="term">
+                <th mat-header-cell *matHeaderCellDef>Term</th>
+                <td mat-cell *matCellDef="let row">{{row.numberOfYears}} Years</td>
+              </ng-container>
+          
+              <ng-container matColumnDef="contributions">
+                <td mat-cell *matCellDef="let row" [attr.colspan]="'3'">
+                  <div class="contribution flex-column">
+                    <div class="contribution-heading">
+                        <span>Contributions</span>
+                        <button mat-icon-button color="primary" (click)="addContribution(row, contrib)"><mat-icon>add</mat-icon></button>
+                    </div>
+                    
+                    <div *ngFor="let contrib of row.contributions" class="contribution-detail">
+                      <div class="contribution-display">{{contrib.displayString()}}</div>
+                    
+                      <button mat-icon-button (click)="editContribution(row, contrib)"><mat-icon>edit</mat-icon></button>
+                      <button mat-icon-button (click)="deleteContribution(contrib)"><mat-icon>delete</mat-icon></button>
+                    </div>
+                  </div>
+                  <!-- <table mat-table [dataSource]="row.contributions">
+                    <ng-container matColumnDef="contribDescription">
+                      <th mat-header-cell *matHeaderCellDef>Contribution</th>
+                      <td mat-cell *matCellDef="let contrib">{{contrib.displayString()}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="contribButtons">
+                      <th mat-header-cell *matHeaderCellDef>
+                        <button mat-icon-button (click)="addContribution(row)"><mat-icon>add</mat-icon></button>
+                      </th>
+                      <td mat-cell *matCellDef="let contrib">
+                        <button mat-icon-button (click)="editContribution(row, contrib)"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button (click)="deleteContribution(contrib)"><mat-icon>delete</mat-icon></button>
+                      </td>
+                    </ng-container>
+
+                    <tr *matHeaderRowDef="['contribDescription', 'contribButtons' ]"></tr>
+                    <tr *matRowDef="let row; columns: ['contribDescription', 'contribButtons' ];"></tr>
+                  </table>     -->
+                </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="['name', 'principal', 'term' ]"></tr>
+              <tr mat-row *matRowDef="let row; columns: ['name', 'principal', 'term'];"></tr>
+              <tr mat-row *matRowDef="let row: columns: ['contributions']"></tr>
+              
+          </table>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="addInvestment(simulation)">Add Investment</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -1,0 +1,24 @@
+<h4>IRA Contribution</h4>
+<form [formGroup]="contributionForm" (ngSubmit)="onSubmit()">
+<div class="flex-dialog-content">
+  
+    <mat-form-field>
+      <mat-select placeholder="Frequency" formControlName="frequency">
+        <mat-option *ngFor="let key of keys" [value]="enumValues[key]">{{key}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" min="0" placeholder="Annual Contribution" formControlName="annualAmount">
+    </mat-form-field>
+
+    <mat-checkbox formControlName="max">Max Out Contribution</mat-checkbox>
+  
+</div>
+
+<mat-dialog-actions>
+  <span class="flex"></span>
+  <button mat-button type='submit' color="primary" [disabled]="!contributionForm.valid">Ok</button>
+  <button mat-button mat-dialog-close='false'>Cancel</button>
+</mat-dialog-actions>
+</form>

@@ -1,0 +1,50 @@
+<h4>401k Contribution</h4>
+<form [formGroup]="contributionForm" (ngSubmit)="onSubmit()">
+<div class="flex-dialog-content">
+  
+    <div class="flex-row">
+      <mat-form-field class="flex-control">
+        <input matInput type="number" placeholder="Annual Salary" formControlName="salary">
+      </mat-form-field>
+      <mat-form-field class="flex-control">
+        <input matInput type="number" placeholder="Contribution %" formControlName="contributionPercent">
+      </mat-form-field>  
+    </div>
+    <div class="flex-row">
+      <mat-form-field class="flex-control">
+        <input matInput type="number" placeholder="Employer Match %" formControlName="employerMatchPercent">
+      </mat-form-field>
+      <mat-form-field class="flex-control">
+        <input matInput type="number" placeholder="Employer Match Maximum %" formControlName="employerMatchMax">
+      </mat-form-field>  
+    </div>
+
+    <div class="flex-row">
+      <mat-form-field class="flex-control">
+        <mat-select placeholder="Frequency" formControlName="payFrequency">
+          <mat-option *ngFor="let key of keys" [value]="enumValues[key]">{{key}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="flex-control">
+        <input matInput type="number" placeholder="Annual Salary Increase %" formControlName="salaryIncreasePercent">
+      </mat-form-field>  
+    </div>
+
+    <div class="flex-column">
+      <mat-checkbox formControlName="safeHarbor">Employer Safe-Harbor Contribution?</mat-checkbox>
+
+      <mat-form-field class="flex-control">
+        <input matInput type="number" placeholder="Safe Harbor %" formControlName="safeHarborPercent">
+      </mat-form-field>
+    </div>
+
+    
+  
+</div>
+
+<mat-dialog-actions>
+  <span class="flex"></span>
+  <button mat-button type='submit' color="primary" [disabled]="!contributionForm.valid">Ok</button>
+  <button mat-button mat-dialog-close='false'>Cancel</button>
+</mat-dialog-actions>
+</form>

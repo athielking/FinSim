@@ -1,0 +1,19 @@
+<div class="flex-column" style="margin: 16px;">
+  <mat-card>
+    <mat-card-title>Results</mat-card-title>
+    <mat-card-content>
+      <div *ngIf="chart" >
+        <canvas baseChart width="600" height="600"
+                    [datasets]="chart.series"
+                    [labels]="chart.labels"
+                    [options]="options"
+                    legend="true"
+                    chartType="line">
+        </canvas>
+      </div>
+      <div *ngIf="!chart">
+        <span>Simulation Not Ran</span>
+      </div>
+  </mat-card-content>
+  </mat-card>
+</div>

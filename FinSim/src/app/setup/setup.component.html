@@ -1,0 +1,16 @@
+
+
+<div class="flex-column">
+  <ng-container *ngFor="let simulation of (simulationStore.simulations$ | async)">
+    <fs-simulation-setup [simulation]="simulation">
+    </fs-simulation-setup>
+  </ng-container>
+</div>
+
+<button mat-button (click)="initializeDefaults()">Add Default Simulations</button>
+<button mat-button (click)="runSimulations()">Run!</button>
+
+<div *ngFor="let chart of (chartStore.charts$ | async)" style="display: flex;">
+  <fs-chart [chart]="chart">
+  </fs-chart>
+</div>

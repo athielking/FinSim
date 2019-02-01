@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+%flex {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.flex {
+    @extend %flex;
+}
+
+.flex-row {
+    @extend %flex;
+    flex-direction: row;
+}
+
+.flex-row.reverse {
+    flex-direction: row-reverse
+}
+
+.flex-column {
+    @extend %flex;
+    flex-direction: column;
+}
+
+.flex-column.reverse {
+    flex-direction: column-reverse
+}
+
+.flex-dialog-content {
+    @extend %flex;
+    flex-direction: column;
+    margin: 0 -24px;
+    padding: 0 24px;
+}
+
+.flex-control {
+    @extend %flex;
+    margin: 0 4px;
+}

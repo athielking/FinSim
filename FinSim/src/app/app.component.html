@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [opened]="true"
+    fixedInViewport="true"
+    [attr.role]="'navigation'"
+    [mode]="'side'">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span style="padding-left:8px;">Home</span>
+      </a>
+      <a mat-list-item routerLink="/">
+        <mat-icon>assessment</mat-icon>
+        <span style="padding-left:8px;">Reports</span>
+      </a>
+      <a mat-list-item routerLink="/">
+        <mat-icon>assignment_turned_in</mat-icon>
+        <span style="padding-left:8px;">Forms</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <div class="flex-row">
+          <a mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+            <span style="padding-left: 16px; font-size: 20px;"> FinSim</span>
+          </a>
+        </div>
+      </mat-toolbar>
+      <fs-simulation></fs-simulation>>
+    </mat-sidenav-content>
+</mat-sidenav-container>

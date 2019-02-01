@@ -1,0 +1,9 @@
+<div style="margin: 16px;"><h3>Simulations</h3></div>
+
+<div class="flex-row" *ngFor="let simulation of (simulationStore.simulations$ | async)">
+  <fs-simulation-setup [simulation]="simulation"></fs-simulation-setup>
+  <fs-chart [chart]="(simulationStore.getChartResult(simulation) | async)"></fs-chart>
+</div>
+
+<button mat-button (click)="initializeDefaults()">Add Default Simulations</button>
+<button mat-button (click)="runSimulations()">Run!</button>
